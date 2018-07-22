@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans">
+
+	<bean id="footballCoach" 
+		class="model.FootballCoach"></bean>
+	<bean id="happyFortuneService"
+		class="serviceImpl.HappyFortuneService"></bean>
+		<bean id="sadnessFortuneService"
+		class="serviceImpl.SadnessFortuneService"></bean>
+		
+	<bean class="model.HockeyCoach">
+	<constructor-arg ref="happyFortuneService"></constructor-arg></bean>
+	
+	<bean class="model.TennisCoach">
+	<property name="fs" ref = "happyFortuneService"></property>
+	<property name="name" value="Arnold"></property>
+	</bean>
+
+	
+	<bean class="model.GolfCoach">
+	<constructor-arg ref="sadnessFortuneService"></constructor-arg></bean>
+
+</beans>
